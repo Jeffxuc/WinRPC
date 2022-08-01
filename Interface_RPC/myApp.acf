@@ -1,0 +1,7 @@
+
+[
+    implicit_handle (handle_t MyApp_UsedHandle)
+] 
+interface MyApp
+{
+}

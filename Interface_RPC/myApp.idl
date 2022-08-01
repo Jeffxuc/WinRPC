@@ -1,0 +1,50 @@
+
+[
+    uuid(7a98c250-6808-11cf-b73b-00aa00b677a9), //UUID具有唯一性，不同的interface对应不同的UUID
+    version(1.0)  // 当有多个interface时，只连接相同版本的Client 和 Server
+    
+]
+
+interface MyApp
+{
+    // MIDL compiler generate stub file: const char* ===> const unsigned char*
+    void HelloProc([in, string] const char* pszString);
+
+    /// <summary>
+    /// Used for Client shutdown the Server.
+    /// </summary>
+    /// <param name=""></param>
+    void Shutdown(void);
+
+    int GetAddRes([in] int num1, [in] int num2);
+
+    /// <summary>
+    /// 根据输入的内容来，设置Client端输出的内容
+    /// 【注意】如果要获取输出为字符串，则必须要用数组的形式，而不能用字符串指针的形式
+    /// 即，out的参数只能是: wchar_t pRet[20]，而不能是：wchar_t* pRet
+    /// </summary>
+    /// <param name="pState"></param>
+    /// <param name="pRet">输出的宽字符数组，不能用 wchar_t* 来表示。</param>
+    /// <returns></returns>
+    int GetCondition([in, string] const char* pState, [out] wchar_t pRet[20]);
+
+    void GetMyAppVersion([out] wchar_t versionNum[10]);
+
+    /// <summary>
+    /// 此时Client端可以正常获取整个字符串的内容
+    /// </summary>
+    /// <param name="arrChar"></param>
+    void GetArrCharStr([out] char arrChar[100]);
+
+    /// <summary>
+    /// 此时Client只能获取一个字符，而不能得到整个字符串
+    /// </summary>
+    /// <param name="pChar"></param>
+    void GetPointerCharStr([out] char* pChar);
+
+}
+
+/******** MIDL Compiler ********
+* 1. char默认为无符号类型，等价于 unsigned char. MIDL会将其char 编译成 unsigned char.
+* 2. wchar_t 默认就是无符号类型的宽字符
+*******************************/
