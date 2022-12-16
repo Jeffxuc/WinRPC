@@ -85,7 +85,14 @@ int main()
 
     unsigned char pChar[100];
     GetPointerCharStr(pChar);
-    printf("Pointer char = : %s", pChar);
+    printf("Pointer char = : %s\n", pChar);
+
+
+    int fanSpeed = GetFanSpeed();
+    printf("The Fan speed : %d", fanSpeed);
+
+    // Shutdown and exit the server.
+    Shutdown();
 
     }
     RpcExcept(1)

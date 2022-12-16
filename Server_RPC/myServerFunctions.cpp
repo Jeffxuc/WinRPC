@@ -116,3 +116,9 @@ void GetPointerCharStr(
 }
 
 
+int GetFanSpeed()
+{
+    return 20000;
+}
+
+

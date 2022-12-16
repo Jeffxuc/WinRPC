@@ -73,6 +73,8 @@ void GetArrCharStr(
 void GetPointerCharStr( 
     /* [out] */ unsigned char *pChar);
 
+int GetFanSpeed( void);
+
 
 extern handle_t MyApp_UsedHandle;
 
